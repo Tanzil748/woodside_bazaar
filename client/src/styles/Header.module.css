@@ -1,0 +1,23 @@
+.cartButton {
+  background-color: green;
+  position: relative;
+  border: none;
+}
+
+.cartButton:hover {
+  background-color: rgb(1, 147, 1);
+}
+
+.secondRowLink {
+  text-decoration: none;
+  color: black;
+  cursor: pointer;
+}
+
+.secondRowLink:hover {
+  color: green;
+}
+
+.navLineBreak {
+  color: lightgray;
+}

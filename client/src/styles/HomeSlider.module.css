@@ -1,0 +1,7 @@
+.carourselImg {
+  display: block;
+  width: 100%;
+  filter: brightness(0.5);
+  height: 500px;
+  object-fit: cover;
+}
