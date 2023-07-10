@@ -146,10 +146,6 @@ const Header = (props: Props) => {
                   <NavLink to="/products" className={css.secondRowLink}>
                     PRODUCTS
                   </NavLink>
-                  <span className={css.navLineBreak}>|</span>
-                  <NavLink to="/wishlist" className={css.secondRowLink}>
-                    WISH LIST
-                  </NavLink>
                 </div>
               </div>
             </Col>

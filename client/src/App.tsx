@@ -5,7 +5,6 @@ import LoginPage from "./pages/LoginPage.tsx";
 import RegisterPage from "./pages/RegisterPage.tsx";
 import ProductsPage from "./pages/ProductsPage.tsx";
 import CartPage from "./pages/CartPage.tsx";
-import WishlistPage from "./pages/WishlistPage.tsx";
 import RootLayout from "./layout/RootLayout.tsx";
 
 // set a private route for wish list & cart page (must be signed in!)
@@ -30,10 +29,6 @@ const App = () => {
         {
           path: "/products",
           element: <ProductsPage />,
-        },
-        {
-          path: "/wishlist",
-          element: <WishlistPage />,
         },
         {
           path: "/cart",
