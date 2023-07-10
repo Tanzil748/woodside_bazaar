@@ -96,7 +96,7 @@ const PromoCategories = (props: Props) => {
                   items**
                 </p>
                 <Link to="/products">
-                  <Button className="bg-danger btn-md border-0">
+                  <Button className={css.productRedirectButton}>
                     Shop Now
                   </Button>
                 </Link>

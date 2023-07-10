@@ -6,8 +6,9 @@
 .smallBoxTextContainer {
   position: absolute;
   top: 15%;
-  left: 3%;
+  right: 3%;
   color: white;
+  text-align: end;
 }
 
 .smallBoxTextTitle {
@@ -19,7 +20,7 @@
 }
 
 .smallBox > img {
-  filter: brightness(0.7);
+  filter: brightness(0.8);
   height: 204px;
 }
 
@@ -41,4 +42,13 @@
 .bigBox img {
   width: 100%;
   object-fit: cover;
+}
+
+.productRedirectButton {
+  background-color: #d9534f;
+  border: none;
+}
+
+.productRedirectButton:hover {
+  background-color: #a42a04;
 }
