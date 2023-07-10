@@ -109,7 +109,7 @@ const Header = (props: Props) => {
         <Container>
           <Row>
             <Col className="d-flex align-items-center justify-content-start">
-              <Dropdown className="pr-5 d-none d-sm-block">
+              <Dropdown className="pr-5">
                 <Dropdown.Toggle
                   className="bg-body-tertiary text-black border-0 d-flex align-items-center"
                   id="dropdown-basic"

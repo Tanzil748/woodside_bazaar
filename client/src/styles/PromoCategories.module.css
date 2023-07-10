@@ -1,0 +1,44 @@
+.smallBox {
+  position: relative;
+  height: 220px;
+}
+
+.smallBoxTextContainer {
+  position: absolute;
+  top: 15%;
+  left: 3%;
+  color: white;
+}
+
+.smallBoxTextTitle {
+  font-size: 2rem;
+}
+
+.smallBoxText {
+  font-size: 1.1rem;
+}
+
+.smallBox > img {
+  filter: brightness(0.7);
+  height: 204px;
+}
+
+.bigBox {
+  position: relative;
+}
+
+.bigBoxText {
+  position: absolute;
+  top: 15%;
+  left: 5%;
+}
+
+.bigBox > img {
+  height: 423px;
+}
+
+.smallBox img,
+.bigBox img {
+  width: 100%;
+  object-fit: cover;
+}
