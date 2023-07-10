@@ -43,13 +43,10 @@ const Header = (props: Props) => {
       </div>
 
       <Navbar>
-        <Container
-          fluid
-          className="container-xxl d-flex flex-column p-0 px-md-3"
-        >
+        <Container className="d-flex flex-column">
           {/* Top Nav */}
           <Row className="w-100 align-items-center">
-            <Col sm={12} md={4} lg={3}>
+            <Col xs={10} sm={11} lg={3}>
               <Navbar.Brand
                 className="fw-bolder d-flex justify-content-between justify-content-md-start"
                 href="/"
@@ -61,11 +58,12 @@ const Header = (props: Props) => {
                   </div>
                 </div>
               </Navbar.Brand>
-              {/* <Navbar.Toggle /> */}
             </Col>
 
+            {/* NOTE: I changed the order of the search field & the account/cart icon on medium & smaller screens */}
+
             {/* search field */}
-            <Col sm={12} md={8} lg={6}>
+            <Col sm={12} md={12} lg={6} className="order-2 order-lg-1">
               <InputGroup className="d-flex justify-content-center align-items-center">
                 <Form.Control
                   placeholder="Search our store"
@@ -79,12 +77,13 @@ const Header = (props: Props) => {
             </Col>
 
             {/* account & cart */}
-            <Col lg={3} className="d-none d-lg-block">
+            <Col xs={2} sm={1} lg={3} className="order-1 order-lg-2">
               <div className="d-flex gap-2 align-items-center justify-content-end">
                 <NavDropdown
                   title={
                     <>
-                      <PermIdentity /> Account
+                      <PermIdentity />{" "}
+                      <span className="d-none d-sm-inline">Account</span>
                     </>
                   }
                 >
@@ -110,8 +109,7 @@ const Header = (props: Props) => {
         <Container>
           <Row>
             <Col className="d-flex align-items-center justify-content-start">
-              {/* dropdown with categories */}
-              <Dropdown className="pr-5">
+              <Dropdown className="pr-5 d-none d-sm-block">
                 <Dropdown.Toggle
                   className="bg-body-tertiary text-black border-0 d-flex align-items-center"
                   id="dropdown-basic"
@@ -139,7 +137,7 @@ const Header = (props: Props) => {
               </Dropdown>
 
               {/* NavLink to other pages */}
-              <div className="d-flex justify-content-between d-none d-sm-block">
+              <div className="d-flex justify-content-between">
                 <div className="d-flex gap-2">
                   <NavLink to="/" className={css.secondRowLink}>
                     HOME
