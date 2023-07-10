@@ -8,14 +8,10 @@ const LoginPage = () => {
       {/* This centers the form on screen */}
       <Container className="d-flex align-items-center justify-content-center">
         <Row className={css.formOuterContainer}>
-          {/* right side form */}
+          {/* left side form */}
           <Col className={css.rightContainer}>
             <Form>
               <h1 style={{ fontSize: "1.6rem" }}>Log In</h1>
-              <Form.Group className="mb-3" controlId="formBasicName">
-                <Form.Label>User name</Form.Label>
-                <Form.Control type="userName" placeholder="Enter username" />
-              </Form.Group>
               <Form.Group className="mb-3" controlId="formBasicEmail">
                 <Form.Label>Email address</Form.Label>
                 <Form.Control type="email" placeholder="Enter email" />
