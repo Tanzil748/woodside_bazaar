@@ -1,0 +1,4 @@
+.formSelectOutline:focus {
+  box-shadow: none;
+  border: none;
+}

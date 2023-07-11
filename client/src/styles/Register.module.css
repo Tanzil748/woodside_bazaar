@@ -13,7 +13,7 @@
       rgba(185, 189, 185, 0.52),
       rgba(12, 55, 5, 0.73)
     ),
-    url("https://images.unsplash.com/photo-1517433367423-c7e5b0f35086?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=802&q=80");
+    url("../assets/loginRegister.jpg");
   background-size: cover;
   background-repeat: no-repeat;
   flex: 1;

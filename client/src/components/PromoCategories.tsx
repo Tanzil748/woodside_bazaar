@@ -1,6 +1,11 @@
 import css from "../styles/PromoCategories.module.css";
 import { Container, Row, Col, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import big1 from "../assets/big1.jpg";
+import small1 from "../assets/small1.jpg";
+import small2 from "../assets/small2.jpg";
+import small3 from "../assets/small3.jpg";
+import small4 from "../assets/small4.jpg";
 
 type Props = {};
 
@@ -15,7 +20,7 @@ const PromoCategories = (props: Props) => {
               <Col>
                 <div className={css.smallBox}>
                   <img
-                    src="https://images.unsplash.com/photo-1455998781417-e75917915b38?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NjB8fGZydWl0JTIwdG8lMjBvbmUlMjBzaWRlfGVufDB8MHwwfHw%3D&auto=format&fit=crop&w=500&q=60"
+                    src={small1}
                     alt="sampleTitle"
                     className="img-fluid rounded-1"
                   />
@@ -30,7 +35,7 @@ const PromoCategories = (props: Props) => {
               <Col>
                 <div className={css.smallBox}>
                   <img
-                    src="https://images.unsplash.com/photo-1490818387583-1baba5e638af?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NHx8ZHJpbmslMjB3aXRoJTIwc29saWQlMjBiYWNrZ3JvdW5kfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60"
+                    src={small2}
                     alt="sampleTitle"
                     className="img-fluid rounded-1"
                   />
@@ -48,7 +53,7 @@ const PromoCategories = (props: Props) => {
               <Col>
                 <div className={css.smallBox}>
                   <img
-                    src="https://images.unsplash.com/photo-1514228742587-6b1558fcca3d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTZ8fGRyaW5rJTIwd2l0aCUyMHNvbGlkJTIwYmFja2dyb3VuZHxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60"
+                    src={small3}
                     alt="sampleTitle"
                     className="img-fluid rounded-1"
                   />
@@ -63,7 +68,7 @@ const PromoCategories = (props: Props) => {
               <Col>
                 <div className={css.smallBox}>
                   <img
-                    src="https://images.unsplash.com/photo-1518691340140-512e66ce957b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTN8fGZvb2QlMjB3aXRoJTIwc29saWQlMjBjb2xvciUyMGJhY2tncm91bmR8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60"
+                    src={small4}
                     alt="sampleTitle"
                     className="img-fluid rounded-1"
                   />
@@ -81,7 +86,7 @@ const PromoCategories = (props: Props) => {
           <Col xs={12} lg={6} className="order-1 order-lg-2">
             <div className={css.bigBox}>
               <img
-                src="https://images.unsplash.com/photo-1502741126161-b048400d085d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2069&q=80"
+                src={big1}
                 alt="sampleTitle"
                 className="img-fluid rounded-1"
               />
