@@ -1,4 +1,12 @@
-export const seederData = [
+// ensures that I don't accidentally enter a value with missing data
+type ProductType = {
+  name: string;
+  img: string;
+  price: number;
+  category: string;
+};
+
+export const seederData: ProductType[] = [
   {
     name: "Apple",
     img: "https://images.unsplash.com/photo-1619546813926-a78fa6372cd2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
