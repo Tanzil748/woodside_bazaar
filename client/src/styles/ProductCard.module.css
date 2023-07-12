@@ -1,0 +1,55 @@
+.productTitle {
+  font-weight: bolder;
+}
+
+.productPrice {
+  color: rgb(4, 164, 4);
+  margin-bottom: 0;
+  font-size: 1.1rem;
+}
+
+.addBtn {
+  background-color: green;
+  color: white;
+  box-shadow: none;
+  border: 0;
+  height: 30px;
+  display: flex;
+  align-items: center;
+}
+
+.addBtn:hover {
+  background-color: rgb(4, 140, 4);
+}
+
+.categoryOverlay {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background-color: rgb(227, 11, 11);
+  color: white;
+  padding: 2px 4px;
+  border-radius: 2px;
+  font-size: 0.9rem;
+}
+
+/* small */
+@media (min-width: 576px) {
+  .productTitle {
+    font-size: 0.8rem;
+  }
+}
+
+/* medium */
+@media (min-width: 768px) {
+  .productTitle {
+    font-size: 0.9rem;
+  }
+}
+
+/* large */
+@media (min-width: 992px) {
+  .productTitle {
+    font-size: 1rem;
+  }
+}

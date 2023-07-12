@@ -2,3 +2,37 @@
   box-shadow: none;
   border: none;
 }
+
+/* custom columns since I don't like how it looks in large+ screens */
+.customCol {
+  position: relative;
+  min-height: 1px;
+  padding-right: 10px;
+  padding-left: 10px;
+}
+
+.customCol {
+  width: 50%;
+  float: left;
+}
+
+@media (min-width: 576px) {
+  .customCol {
+    width: 33%;
+    float: left;
+  }
+}
+
+@media (min-width: 768px) {
+  .customCol {
+    width: 25%;
+    float: left;
+  }
+}
+
+@media (min-width: 992px) {
+  .customCol {
+    width: 20%;
+    float: left;
+  }
+}
