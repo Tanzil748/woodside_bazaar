@@ -1,9 +1,11 @@
 import css from "../styles/ProductsPage.module.css";
 import { Container, Row, Col, Form } from "react-bootstrap";
-import { seederData } from "../tempData/seeder";
+import { useFetchAllProductsQuery } from "../redux/productSlice";
 import ProductCard from "../components/ProductCard";
 
 const ProductsPage = () => {
+  const { data, error, isLoading } = useFetchAllProductsQuery();
+
   return (
     <div>
       <Container>
@@ -24,13 +26,21 @@ const ProductsPage = () => {
         </Row>
 
         {/* Product display */}
-        <Row className="gy-3 mb-2">
-          {seederData.map((product, index) => (
-            <div key={index} className={css.customCol}>
-              <ProductCard product={product} />
-            </div>
-          ))}
-        </Row>
+        {isLoading ? (
+          <p>Data loading...</p>
+        ) : error ? (
+          <p>Error occurred</p>
+        ) : (
+          <div>
+            <Row className="gy-3 mb-2">
+              {data.map((product) => (
+                <div key={product._id} className={css.customCol}>
+                  <ProductCard product={product} />
+                </div>
+              ))}
+            </Row>
+          </div>
+        )}
       </Container>
     </div>
   );
