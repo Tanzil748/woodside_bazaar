@@ -5,6 +5,7 @@ const port = process.env.PORT || 4444;
 import { connectDb } from "./connectDb";
 import cors from "cors";
 import { productRouter } from "./routes/Products";
+import { authRouter } from "./routes/Users";
 
 // middleware
 app.use(
@@ -17,6 +18,7 @@ app.use(
 app.use(express.json());
 
 // routes
+app.use("/api/v1/auth", authRouter);
 app.use("/api/v1/products", productRouter);
 
 const startServer = async () => {

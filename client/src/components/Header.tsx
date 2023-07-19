@@ -21,10 +21,13 @@ import {
   Search,
   ViewCompact,
 } from "@mui/icons-material";
+import { useSelector } from "react-redux";
 
 type Props = {};
 
 const Header = (props: Props) => {
+  const { selectedProductQuantity } = useSelector((state) => state.cart);
+
   return (
     <>
       {/* nav banner */}
@@ -94,7 +97,7 @@ const Header = (props: Props) => {
                   <Button type="button" className={css.cartButton}>
                     <LocalGroceryStore fontSize="small" />
                     <span className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
-                      0
+                      {selectedProductQuantity}
                     </span>
                   </Button>
                 </Nav.Link>
