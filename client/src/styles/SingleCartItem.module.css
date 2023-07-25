@@ -24,3 +24,10 @@
 .quantButton:hover {
   background-color: rgb(4, 140, 4);
 }
+
+@media (max-width: 767px) {
+  .imgContainerSize {
+    width: 150px;
+    height: 100px;
+  }
+}

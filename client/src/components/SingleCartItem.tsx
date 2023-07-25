@@ -8,7 +8,7 @@ const SingleCartItem = ({ _id, img, name, category, price, cartQuantity }) => {
 
   return (
     <Row>
-      <Col className="d-flex justify-content-between gy-2 px-3">
+      <Col className="gy-2">
         <div className="d-flex align-items-center gap-4">
           <img src={img} alt={name} className={css.imgContainerSize} />
           <div>
@@ -16,46 +16,45 @@ const SingleCartItem = ({ _id, img, name, category, price, cartQuantity }) => {
             <div className={css.categoryHeader}>Category: {category}</div>
           </div>
         </div>
-        <div></div>
-        <div className="align-self-center text-end fw-semibold">
-          <div className="fs-4">${price}</div>
-          <div className={css.cartQuantityBox}>
-            <Button
-              className={css.quantButton}
-              onClick={() =>
-                dispatch(
-                  decreaseProductCart({
-                    _id,
-                    img,
-                    name,
-                    category,
-                    price,
-                    cartQuantity,
-                  })
-                )
-              }
-            >
-              -
-            </Button>
-            <div className="fw-bolder lead">{cartQuantity}</div>
-            <Button
-              className={css.quantButton}
-              onClick={() =>
-                dispatch(
-                  addProductCart({
-                    _id,
-                    img,
-                    name,
-                    category,
-                    price,
-                    cartQuantity,
-                  })
-                )
-              }
-            >
-              +
-            </Button>
-          </div>
+      </Col>
+      <Col className="d-flex flex-column justify-content-center align-items-end fw-semibold">
+        <div className="fs-4">${price}</div>
+        <div className={css.cartQuantityBox}>
+          <Button
+            className={css.quantButton}
+            onClick={() =>
+              dispatch(
+                decreaseProductCart({
+                  _id,
+                  img,
+                  name,
+                  category,
+                  price,
+                  cartQuantity,
+                })
+              )
+            }
+          >
+            -
+          </Button>
+          <div className="fw-bolder lead">{cartQuantity}</div>
+          <Button
+            className={css.quantButton}
+            onClick={() =>
+              dispatch(
+                addProductCart({
+                  _id,
+                  img,
+                  name,
+                  category,
+                  price,
+                  cartQuantity,
+                })
+              )
+            }
+          >
+            +
+          </Button>
         </div>
       </Col>
     </Row>
