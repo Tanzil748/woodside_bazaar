@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import { NavLink } from "react-router-dom";
 import css from "../styles/Header.module.css";
 import bazaarLogo from "../assets/icons8-instacart-45.png";
@@ -21,12 +21,16 @@ import {
   Search,
   ViewCompact,
 } from "@mui/icons-material";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { calcAllTotals } from "../redux/cartSlice";
 
-type Props = {};
-
-const Header = (props: Props) => {
+const Header = () => {
+  const dispatch = useDispatch();
   const { selectedProductQuantity } = useSelector((state) => state.cart);
+
+  useEffect(() => {
+    dispatch(calcAllTotals());
+  }, [selectedProductQuantity, dispatch]);
 
   return (
     <>
@@ -37,7 +41,7 @@ const Header = (props: Props) => {
             className="d-flex align-items-center w-100"
             style={{ fontSize: "0.8rem" }}
           >
-            <Col>Free Shipping On Orders Over $20</Col>
+            <Col>Extra Savings For New Customers!</Col>
             <Col className="text-end">
               <LocalPhone fontSize="small" /> 1-800-FOOD
             </Col>

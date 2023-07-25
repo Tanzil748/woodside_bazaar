@@ -1,7 +1,11 @@
 import { Row, Col, Button } from "react-bootstrap";
 import css from "../styles/SingleCartItem.module.css";
+import { addProductCart, decreaseProductCart } from "../redux/cartSlice";
+import { useDispatch } from "react-redux";
 
-const SingleCartItem = ({ img, name, category, price, quantity }) => {
+const SingleCartItem = ({ _id, img, name, category, price, cartQuantity }) => {
+  const dispatch = useDispatch();
+
   return (
     <Row>
       <Col className="d-flex justify-content-between gy-2 px-3">
@@ -18,18 +22,36 @@ const SingleCartItem = ({ img, name, category, price, quantity }) => {
           <div className={css.cartQuantityBox}>
             <Button
               className={css.quantButton}
-              // onClick={() =>
-              //   dispatch(decreaseCart({ _id, img, name, price, cartQuantity }))
-              // }
+              onClick={() =>
+                dispatch(
+                  decreaseProductCart({
+                    _id,
+                    img,
+                    name,
+                    category,
+                    price,
+                    cartQuantity,
+                  })
+                )
+              }
             >
               -
             </Button>
-            <div className="fw-bolder lead">{quantity}</div>
+            <div className="fw-bolder lead">{cartQuantity}</div>
             <Button
               className={css.quantButton}
-              // onClick={() =>
-              //   dispatch(addToCart({ _id, img, name, price, cartQuantity }))
-              // }
+              onClick={() =>
+                dispatch(
+                  addProductCart({
+                    _id,
+                    img,
+                    name,
+                    category,
+                    price,
+                    cartQuantity,
+                  })
+                )
+              }
             >
               +
             </Button>
