@@ -18,13 +18,10 @@ const CartPage = () => {
 
   return (
     <>
-      <Container>
+      <Container style={{ minHeight: "62vh" }}>
         <Row className="py-2">
           {cart.selectedProducts.length === 0 ? (
-            <div
-              className="d-flex flex-column justify-content-center align-items-center"
-              style={{ minHeight: "55vh" }}
-            >
+            <div className="d-flex flex-column align-items-center">
               <div className="lead fw-bolder">Cart is Empty</div>
               <p>Please add items to get order details</p>
               <Button
