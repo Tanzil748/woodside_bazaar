@@ -4,6 +4,7 @@ const app = express();
 const port = process.env.PORT || 4444;
 import { connectDb } from "./connectDb";
 import cors from "cors";
+import cookieParser from "cookie-parser";
 import { productRouter } from "./routes/Products";
 import { authRouter } from "./routes/Users";
 
@@ -16,6 +17,8 @@ app.use(
 );
 
 app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+app.use(cookieParser());
 
 // routes
 app.use("/api/v1/auth", authRouter);
