@@ -93,3 +93,19 @@ export const logout = async (req: Request, res: Response) => {
     .status(200)
     .json("User logged out");
 };
+
+// made it request or any since user was not accessible - fixed my typescript error
+export const profile = async (req: Request | any, res: Response) => {
+  const user = await userModel.findById(req.user._id);
+
+  if (user) {
+    res.json({
+      _id: user._id,
+      name: user.username,
+      email: user.email,
+    });
+  } else {
+    res.status(404);
+    throw new Error("User not found");
+  }
+};
