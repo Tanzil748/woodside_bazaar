@@ -1,8 +1,39 @@
+import { useState, useEffect } from "react";
 import { Form, Container, Button, Row, Col } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import css from "../styles/Register.module.css";
+import { useSelector, useDispatch } from "react-redux";
+import { useRegisterMutation } from "../redux/authEndpoints";
+import { setLocalUser } from "../redux/authSlice";
 
 const RegisterPage = () => {
+  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const [register] = useRegisterMutation();
+  const { userInformation } = useSelector((state) => state.auth);
+
+  useEffect(() => {
+    if (userInformation) {
+      navigate("/");
+    }
+  }, [navigate, userInformation]);
+
+  const registerHandler = async (e) => {
+    e.preventDefault();
+    try {
+      const res = await register({ username, email, password }).unwrap();
+      dispatch(setLocalUser({ ...res }));
+      navigate("/");
+    } catch (error) {
+      console.log(error?.data);
+    }
+  };
+
   return (
     <div style={{ backgroundColor: "#AFE1AF" }}>
       {/* This centers the form on screen */}
@@ -18,21 +49,38 @@ const RegisterPage = () => {
 
           {/* right side form */}
           <Col className={css.rightContainer}>
-            <Form>
+            <Form onSubmit={registerHandler}>
               <h1 style={{ fontSize: "1.6rem" }}>Register Account</h1>
               <Form.Group className="mb-3" controlId="formBasicName">
                 <Form.Label>User name</Form.Label>
-                <Form.Control type="userName" placeholder="Enter username" />
+                <Form.Control
+                  type="userName"
+                  placeholder="Enter username"
+                  value={username}
+                  onChange={(e) => setUsername(e.target.value)}
+                />
               </Form.Group>
               <Form.Group className="mb-3" controlId="formBasicEmail">
                 <Form.Label>Email address</Form.Label>
-                <Form.Control type="email" placeholder="Enter email" />
+                <Form.Control
+                  type="email"
+                  placeholder="Enter email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                />
               </Form.Group>
               <Form.Group className="mb-3" controlId="formBasicPassword">
                 <Form.Label>Password</Form.Label>
-                <Form.Control type="password" placeholder="Enter password" />
+                <Form.Control
+                  type="password"
+                  placeholder="Enter password"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                />
               </Form.Group>
-              <Button className={css.formButton}>Create Account</Button>
+              <Button type="submit" className={css.formButton}>
+                Create Account
+              </Button>
             </Form>
           </Col>
         </Row>

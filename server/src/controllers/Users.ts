@@ -23,25 +23,15 @@ export const register = async (req: Request, res: Response) => {
       password: hashed,
     });
 
-    // create jwt-token in cookie
-    const jwtToken = jwt.sign({ _id: user._id }, process.env.JWT_SECRET!, {
-      expiresIn: "30d",
-    });
+    // create jwt-token
+    const jwtToken = jwt.sign({ _id: user._id }, process.env.JWT_SECRET!);
 
-    return res
-      .cookie("jwt", jwtToken, {
-        httpOnly: true,
-        // only returns true in production
-        secure: process.env.NODE_ENV !== "development",
-        sameSite: "strict",
-        maxAge: 30 * 24 * 60 * 60 * 1000,
-      })
-      .status(201)
-      .json({
-        _id: user._id,
-        username: user.username,
-        email: user.email,
-      });
+    return res.status(201).json({
+      _id: user._id,
+      username: user.username,
+      email: user.email,
+      jwtToken,
+    });
   } catch (error) {
     res.status(401).json("User failed to register account");
   }
@@ -61,39 +51,20 @@ export const login = async (req: Request, res: Response) => {
       return res.status(401).json("Wrong password");
     }
 
-    const jwtToken = jwt.sign({ _id: user._id }, process.env.JWT_SECRET!, {
-      expiresIn: "30d",
-    });
+    const jwtToken = jwt.sign({ _id: user._id }, process.env.JWT_SECRET!);
 
-    return res
-      .cookie("jwt", jwtToken, {
-        httpOnly: true,
-        secure: process.env.NODE_ENV !== "development",
-        sameSite: "strict",
-        maxAge: 30 * 24 * 60 * 60 * 1000,
-      })
-      .status(201)
-      .json({
-        _id: user._id,
-        username: user.username,
-        email: user.email,
-      });
+    return res.status(201).json({
+      _id: user._id,
+      username: user.username,
+      email: user.email,
+      jwtToken,
+    });
   } catch (error) {
     res.status(401).json("User failed to login to account");
   }
 };
 
-export const logout = async (req: Request, res: Response) => {
-  return res
-    .clearCookie("jwt", {
-      httpOnly: true,
-      secure: process.env.NODE_ENV !== "development",
-      sameSite: "strict",
-    })
-    .status(200)
-    .json("User logged out");
-};
-
+// TEST ROUTE/CONTROLLER - will see if I use later
 // made it request or any since user was not accessible - fixed my typescript error
 export const profile = async (req: Request | any, res: Response) => {
   const user = await userModel.findById(req.user._id);
@@ -105,7 +76,6 @@ export const profile = async (req: Request | any, res: Response) => {
       email: user.email,
     });
   } else {
-    res.status(404);
-    throw new Error("User not found");
+    res.status(404).json("User not found");
   }
 };

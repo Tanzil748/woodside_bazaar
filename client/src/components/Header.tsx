@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import css from "../styles/Header.module.css";
 import bazaarLogo from "../assets/icons8-instacart-45.png";
 import {
@@ -23,14 +23,26 @@ import {
 } from "@mui/icons-material";
 import { useSelector, useDispatch } from "react-redux";
 import { calcAllTotals } from "../redux/cartSlice";
+import { removeLocalUser } from "../redux/authSlice";
 
 const Header = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const { selectedProductQuantity } = useSelector((state) => state.cart);
+  const { userInformation } = useSelector((state) => state.auth);
 
   useEffect(() => {
     dispatch(calcAllTotals());
   }, [selectedProductQuantity, dispatch]);
+
+  const logoutHandler = () => {
+    try {
+      dispatch(removeLocalUser());
+      navigate("/login");
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   return (
     <>
@@ -94,8 +106,18 @@ const Header = () => {
                     </>
                   }
                 >
-                  <NavDropdown.Item href="/login">Sign In</NavDropdown.Item>
-                  <NavDropdown.Item href="/register">Register</NavDropdown.Item>
+                  {userInformation ? (
+                    <NavDropdown.Item onClick={logoutHandler}>
+                      Log Out
+                    </NavDropdown.Item>
+                  ) : (
+                    <>
+                      <NavDropdown.Item href="/login">Sign In</NavDropdown.Item>
+                      <NavDropdown.Item href="/register">
+                        Register
+                      </NavDropdown.Item>
+                    </>
+                  )}
                 </NavDropdown>
                 <Nav.Link href="/cart">
                   <Button type="button" className={css.cartButton}>
