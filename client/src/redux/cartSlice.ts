@@ -65,7 +65,7 @@ const cartSlice = createSlice({
     },
 
     //reduce => callback function -1st, initial value -2nd
-    calcAllTotals: (state, action) => {
+    calcAllTotals: (state) => {
       // create quantity & total, later equal it to respective selectedProductQuantity & totalPrice
       let { total, quantity } = state.selectedProducts.reduce(
         (cartTotal, cartItem) => {
@@ -86,6 +86,13 @@ const cartSlice = createSlice({
       state.selectedProductQuantity = quantity;
       state.totalPrice = total;
     },
+
+    // after a successful order, I clear out the current order
+    cartSuccessReset: (state) => {
+      state.selectedProducts = [];
+      state.selectedProductQuantity = 0;
+      localStorage.removeItem("selectedProducts");
+    },
   },
 });
 
@@ -94,5 +101,6 @@ export const {
   decreaseProductCart,
   clearAllCart,
   calcAllTotals,
+  cartSuccessReset,
 } = cartSlice.actions;
 export default cartSlice.reducer;

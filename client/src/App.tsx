@@ -6,8 +6,8 @@ import RegisterPage from "./pages/RegisterPage.tsx";
 import ProductsPage from "./pages/ProductsPage.tsx";
 import CartPage from "./pages/CartPage.tsx";
 import RootLayout from "./layout/RootLayout.tsx";
+import CheckoutSuccess from "./pages/CheckoutSuccess.tsx";
 
-// set a private route for wish list & cart page (must be signed in!)
 const App = () => {
   const router = createBrowserRouter([
     {
@@ -34,6 +34,7 @@ const App = () => {
           path: "/cart",
           element: <CartPage />,
         },
+        { path: "/checkout-success", element: <CheckoutSuccess /> },
       ],
     },
   ]);

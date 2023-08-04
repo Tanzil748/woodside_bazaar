@@ -4,17 +4,27 @@ import { useSelector, useDispatch } from "react-redux";
 import { Container, Row, Col, Button } from "react-bootstrap";
 import SingleCartItem from "../components/SingleCartItem";
 import { useNavigate } from "react-router-dom";
-import { clearAllCart, calcAllTotals } from "../redux/cartSlice";
+import {
+  clearAllCart,
+  calcAllTotals,
+  cartSuccessReset,
+} from "../redux/cartSlice";
 import { ArrowRightAlt } from "@mui/icons-material";
 
 const CartPage = () => {
   const cart = useSelector((state) => state.cart);
+  const { userInformation } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
   useEffect(() => {
     dispatch(calcAllTotals());
   }, [cart, dispatch]);
+
+  const checkoutHandler = () => {
+    dispatch(cartSuccessReset());
+    navigate("/checkout-success");
+  };
 
   return (
     <>
@@ -78,7 +88,21 @@ const CartPage = () => {
                       <p>Order Total:</p>
                       <p>${cart.totalPrice.toFixed(2)}</p>
                     </Col>
-                    <Button className="fw-bolder">Confirm Order</Button>
+                    {userInformation ? (
+                      <Button
+                        className="fw-bolder"
+                        onClick={() => checkoutHandler()}
+                      >
+                        Proceed to Checkout
+                      </Button>
+                    ) : (
+                      <Button
+                        className="fw-bolder"
+                        onClick={() => navigate("/login")}
+                      >
+                        Login to Checkout
+                      </Button>
+                    )}
                   </Row>
                 </div>
               </Col>
