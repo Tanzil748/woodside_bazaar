@@ -13,11 +13,11 @@ Woodside Bazaar is an online grocery store that allows users to shop the freshes
 Here's a walkthrough of how the app functions:
 
 - User loads into the home page & looks through the website promo banner. Then heads to the product page and select a variety of products to cart.
-  ![]()
+  ![](https://github.com/Tanzil748/woodside_bazaar/blob/main/gifs/bazaarIntro.gif)
   <br/>
 
 - User can toggle the quantity of their selected products in cart. There are buttons that also allow user to clear entire cart or to continue shopping in product page.
-  ![]()
+  ![](https://github.com/Tanzil748/woodside_bazaar/blob/main/gifs/bazaarCart.gif)
   <br/>
 
 ## Deployment
@@ -39,13 +39,13 @@ Then, to deploy this project run the following on client & server terminal:
 #### Users
 
 - All user information is stored in database when registering account. Login is verified by comparing email and password to user input. The passwords saved in db are encrypted for extra security.
-  ![]()
+  ![](https://github.com/Tanzil748/woodside_bazaar/blob/main/gifs/bazaarUsermodel.gif)
   <br/>
 
 #### Products
 
 - All products were manually imported into product table and are accessible to frontend via RTK Query calls.
-  ![]()
+  ![](https://github.com/Tanzil748/woodside_bazaar/blob/main/gifs/bazaarProductmodel.gif)
   <br/>
 
 ## Future Features
