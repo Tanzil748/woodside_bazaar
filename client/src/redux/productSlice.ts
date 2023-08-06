@@ -18,8 +18,12 @@ export const productSlice = createApi({
       // MUST match server route
       query: () => "products",
     }),
+    fetchProductByCategory: builder.query<ProductType, string>({
+      query: (category) => `products/${category}`,
+    }),
   }),
 });
 
 // now add "use" before & "Query" after the endpoints builder name   =>  fakeName  =>  useFakeNameQuery
-export const { useFetchAllProductsQuery } = productSlice;
+export const { useFetchAllProductsQuery, useFetchProductByCategoryQuery } =
+  productSlice;

@@ -4,6 +4,7 @@ import HomePage from "./pages/HomePage.tsx";
 import LoginPage from "./pages/LoginPage.tsx";
 import RegisterPage from "./pages/RegisterPage.tsx";
 import ProductsPage from "./pages/ProductsPage.tsx";
+import ProductCategory from "./pages/ProductCategory.tsx";
 import CartPage from "./pages/CartPage.tsx";
 import RootLayout from "./layout/RootLayout.tsx";
 import CheckoutSuccess from "./pages/CheckoutSuccess.tsx";
@@ -29,6 +30,10 @@ const App = () => {
         {
           path: "/products",
           element: <ProductsPage />,
+        },
+        {
+          path: "/products/:category",
+          element: <ProductCategory />,
         },
         {
           path: "/cart",

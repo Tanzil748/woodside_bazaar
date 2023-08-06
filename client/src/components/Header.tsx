@@ -148,19 +148,22 @@ const Header = () => {
                 </Dropdown.Toggle>
 
                 <Dropdown.Menu>
-                  <Dropdown.Item href="#/action-1">Action</Dropdown.Item>
-                  <Dropdown.Item href="#/action-2">
-                    Another action
+                  <Dropdown.Item onClick={() => navigate(`/products/Fruit`)}>
+                    Fruits
                   </Dropdown.Item>
-                  <Dropdown.Item href="#/action-3">
-                    Something else
+                  <Dropdown.Item
+                    onClick={() => navigate(`/products/Vegetable`)}
+                  >
+                    Vegetables
                   </Dropdown.Item>
-                  <Dropdown.Item href="#/action-1">Action</Dropdown.Item>
-                  <Dropdown.Item href="#/action-2">
-                    Another action
+                  <Dropdown.Item onClick={() => navigate(`/products/Beverage`)}>
+                    Beverages
                   </Dropdown.Item>
-                  <Dropdown.Item href="#/action-3">
-                    Something else
+                  <Dropdown.Item onClick={() => navigate(`/products/Sweet`)}>
+                    Sweets
+                  </Dropdown.Item>
+                  <Dropdown.Item onClick={() => navigate(`/products/Spice`)}>
+                    Spices
                   </Dropdown.Item>
                 </Dropdown.Menu>
               </Dropdown>
