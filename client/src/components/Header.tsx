@@ -10,8 +10,6 @@ import {
   Navbar,
   Nav,
   NavDropdown,
-  Form,
-  InputGroup,
   Dropdown,
 } from "react-bootstrap";
 import {
@@ -65,38 +63,22 @@ const Header = () => {
         <Container className="d-flex flex-column">
           {/* Top Nav */}
           <Row className="w-100 align-items-center">
-            <Col xs={10} sm={11} lg={3}>
+            <Col xs={3}>
               <Navbar.Brand
                 className="fw-bolder d-flex justify-content-between justify-content-md-start"
                 href="/"
               >
                 <div className="d-flex gap-1 align-items-center">
                   <img src={bazaarLogo} alt="Woodside Bazaar Logo" />
-                  <div>
+                  <div className={css.logoText}>
                     <span className="text-success">Woodside</span> Bazaar
                   </div>
                 </div>
               </Navbar.Brand>
             </Col>
 
-            {/* NOTE: I changed the order of the search field & the account/cart icon on medium & smaller screens */}
-
-            {/* search field */}
-            <Col sm={12} md={12} lg={6} className="order-2 order-lg-1">
-              <InputGroup className="d-flex justify-content-center align-items-center">
-                <Form.Control
-                  placeholder="Search our store"
-                  aria-label="Search our store"
-                  aria-describedby="product-search-bar"
-                />
-                <InputGroup.Text id="product-search-bar">
-                  <Search />
-                </InputGroup.Text>
-              </InputGroup>
-            </Col>
-
             {/* account & cart */}
-            <Col xs={2} sm={1} lg={3} className="order-1 order-lg-2">
+            <Col xs={9}>
               <div className="d-flex gap-2 align-items-center justify-content-end">
                 <NavDropdown
                   title={

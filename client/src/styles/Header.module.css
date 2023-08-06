@@ -21,3 +21,9 @@
 .navLineBreak {
   color: lightgray;
 }
+
+@media (max-width: 394px) {
+  .logoText {
+    font-size: 15px;
+  }
+}
