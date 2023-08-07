@@ -3,9 +3,7 @@ import { Link } from "react-router-dom";
 import { Facebook, Instagram, LinkedIn, Twitter } from "@mui/icons-material";
 import css from "../styles/Footer.module.css";
 
-type Props = {};
-
-const Footer = (props: Props) => {
+const Footer = () => {
   return (
     <div className="py-2 text-white" style={{ backgroundColor: "#035803" }}>
       <Container>

@@ -10,10 +10,11 @@ import {
   cartSuccessReset,
 } from "../redux/cartSlice";
 import { ArrowRightAlt } from "@mui/icons-material";
+import { RootState } from "../redux/store";
 
 const CartPage = () => {
-  const cart = useSelector((state) => state.cart);
-  const { userInformation } = useSelector((state) => state.auth);
+  const cart = useSelector((state: RootState) => state.cart);
+  const { userInformation } = useSelector((state: RootState) => state.auth);
   const dispatch = useDispatch();
   const navigate = useNavigate();
 

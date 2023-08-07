@@ -5,6 +5,7 @@ import css from "../styles/Register.module.css";
 import { useSelector, useDispatch } from "react-redux";
 import { useRegisterMutation } from "../redux/authEndpoints";
 import { setLocalUser } from "../redux/authSlice";
+import { RootState } from "../redux/store";
 
 const RegisterPage = () => {
   const [username, setUsername] = useState("");
@@ -15,7 +16,7 @@ const RegisterPage = () => {
   const navigate = useNavigate();
 
   const [register] = useRegisterMutation();
-  const { userInformation } = useSelector((state) => state.auth);
+  const { userInformation } = useSelector((state: RootState) => state.auth);
 
   useEffect(() => {
     if (userInformation) {
@@ -24,9 +25,12 @@ const RegisterPage = () => {
   }, [navigate, userInformation]);
 
   const registerHandler = async (e) => {
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-unsafe-call
     e.preventDefault();
     try {
+      // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
       const res = await register({ username, email, password }).unwrap();
+      // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
       dispatch(setLocalUser({ ...res }));
       navigate("/");
     } catch (error) {

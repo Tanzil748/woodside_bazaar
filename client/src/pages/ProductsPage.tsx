@@ -1,6 +1,6 @@
 import css from "../styles/ProductsPage.module.css";
 import { Container, Row } from "react-bootstrap";
-import { useFetchAllProductsQuery } from "../redux/productSlice";
+import { useFetchAllProductsQuery, ProductType } from "../redux/productSlice";
 import ProductCard from "../components/ProductCard";
 
 const ProductsPage = () => {
@@ -15,15 +15,16 @@ const ProductsPage = () => {
         ) : error ? (
           <p>Error occurred</p>
         ) : (
-          <div>
-            <Row className="gy-3 mb-2">
-              {data.map((product) => (
+          <>
+            <Row className="gy-3 my-2">
+              {data?.map((product: ProductType) => (
+                // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
                 <div key={product._id} className={css.customCol}>
                   <ProductCard product={product} />
                 </div>
               ))}
             </Row>
-          </div>
+          </>
         )}
       </Container>
     </div>

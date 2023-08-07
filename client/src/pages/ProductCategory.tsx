@@ -1,20 +1,23 @@
 import css from "../styles/ProductsPage.module.css";
 import { Container, Row } from "react-bootstrap";
-import { useFetchProductByCategoryQuery } from "../redux/productSlice";
+import {
+  ProductType,
+  useFetchProductByCategoryQuery,
+} from "../redux/productSlice";
 import ProductCard from "../components/ProductCard";
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 
 const ProductCategory = () => {
   const { category } = useParams();
-  const [selectedCategory, setSelectedCategory] = useState(null);
+  const [selectedCategory, setSelectedCategory] = useState("");
 
   const { data, error, isLoading } =
     useFetchProductByCategoryQuery(selectedCategory);
 
   // Update the selected category when the URL parameter changes
   useEffect(() => {
-    setSelectedCategory(category);
+    setSelectedCategory(category!);
   }, [category]);
 
   return (
@@ -25,15 +28,15 @@ const ProductCategory = () => {
         ) : error ? (
           <p>Error occurred...</p>
         ) : (
-          <div>
+          <>
             <Row className="gy-3 my-2">
-              {data.map((product) => (
+              {data?.map((product: ProductType) => (
                 <div key={product._id} className={css.customCol}>
                   <ProductCard product={product} />
                 </div>
               ))}
             </Row>
-          </div>
+          </>
         )}
       </Container>
     </div>

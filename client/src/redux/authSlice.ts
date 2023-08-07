@@ -1,15 +1,29 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 
+interface UserInfoType {
+  email: string;
+  jwtToken: string;
+  username: string;
+  _id: string;
+}
+
+interface AuthState {
+  userInformation: UserInfoType | null;
+}
+
+const getInitialState = (): AuthState => {
+  const localStorageData = localStorage.getItem("userInformation");
+  return {
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+    userInformation: localStorageData ? JSON.parse(localStorageData) : null,
+  };
+};
 const authSlice = createSlice({
   name: "auth",
-  initialState: {
-    userInformation: localStorage.getItem("userInformation")
-      ? JSON.parse(localStorage.getItem("userInformation"))
-      : null,
-  },
+  initialState: getInitialState(),
   reducers: {
     // add user info to local storage
-    setLocalUser: (state, action) => {
+    setLocalUser: (state, action: PayloadAction<UserInfoType>) => {
       state.userInformation = action.payload;
       localStorage.setItem(
         "userInformation",

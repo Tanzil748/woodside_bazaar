@@ -1,18 +1,40 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { PayloadAction, createSlice } from "@reduxjs/toolkit";
+
+// individual product
+export interface Product {
+  cartQuantity: number;
+  category: string;
+  img: string;
+  name: string;
+  price: number;
+  _id: string;
+}
+
+// entire initial state
+interface CartState {
+  selectedProducts: Product[];
+  selectedProductQuantity: number;
+  totalPrice: number;
+}
+
+// eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+const initialSelectedProducts: Product[] = localStorage.getItem(
+  "selectedProducts"
+)
+  ? JSON.parse(localStorage.getItem("selectedProducts")!)
+  : [];
+
+const initialState: CartState = {
+  selectedProducts: initialSelectedProducts,
+  selectedProductQuantity: 0,
+  totalPrice: 0,
+};
 
 const cartSlice = createSlice({
   name: "cart",
-  initialState: {
-    // if items already in local storage, include them. else start with empty array
-    selectedProducts: localStorage.getItem("selectedProducts")
-      ? JSON.parse(localStorage.getItem("selectedProducts"))
-      : [],
-    // this is for the counter on cart icon
-    selectedProductQuantity: 0,
-    totalPrice: 0,
-  },
+  initialState,
   reducers: {
-    addProductCart: (state, action) => {
+    addProductCart: (state, action: PayloadAction<Product>) => {
       // check if selected product exists
       const itemIndex = state.selectedProducts.findIndex(
         (item) => item._id === action.payload._id
@@ -35,7 +57,7 @@ const cartSlice = createSlice({
       );
     },
 
-    decreaseProductCart: (state, action) => {
+    decreaseProductCart: (state, action: PayloadAction<Product>) => {
       const itemIndex = state.selectedProducts.findIndex(
         (item) => item._id === action.payload._id
       );
@@ -56,7 +78,7 @@ const cartSlice = createSlice({
       );
     },
 
-    clearAllCart: (state, action) => {
+    clearAllCart: (state) => {
       state.selectedProducts = [];
       localStorage.setItem(
         "selectedProducts",
@@ -67,7 +89,7 @@ const cartSlice = createSlice({
     //reduce => callback function -1st, initial value -2nd
     calcAllTotals: (state) => {
       // create quantity & total, later equal it to respective selectedProductQuantity & totalPrice
-      let { total, quantity } = state.selectedProducts.reduce(
+      const { total, quantity } = state.selectedProducts.reduce(
         (cartTotal, cartItem) => {
           const { price, cartQuantity } = cartItem;
           const itemTotal = price * cartQuantity;

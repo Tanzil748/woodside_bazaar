@@ -1,10 +1,11 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
-type ProductType = {
+export type ProductType = {
   name: string;
   img: string;
   price: number;
   category: string;
+  _id: string;
 };
 
 // I am using RTK Query as opposed to async thunk because of the easier syntax to manage api call
@@ -14,7 +15,7 @@ export const productSlice = createApi({
     baseUrl: "http://localhost:4444/api/v1/",
   }),
   endpoints: (builder) => ({
-    fetchAllProducts: builder.query<ProductType, string>({
+    fetchAllProducts: builder.query<ProductType[], void>({
       // MUST match server route
       query: () => "products",
     }),

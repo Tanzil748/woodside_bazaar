@@ -7,9 +7,7 @@ import small2 from "../assets/small2.jpg";
 import small3 from "../assets/small3.jpg";
 import small4 from "../assets/small4.jpg";
 
-type Props = {};
-
-const PromoCategories = (props: Props) => {
+const PromoCategories = () => {
   return (
     <div>
       <Container>

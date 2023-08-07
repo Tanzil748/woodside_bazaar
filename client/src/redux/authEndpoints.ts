@@ -7,24 +7,14 @@ export const authEndpoints = createApi({
   }),
   endpoints: (builder) => ({
     register: builder.mutation({
-      query: (data: {
-        username: string;
-        email: string;
-        password: string;
-        jwtToken: string;
-      }) => ({
+      query: (data: { username: string; email: string; password: string }) => ({
         url: "register",
         method: "POST",
         body: data,
       }),
     }),
     login: builder.mutation({
-      query: (data: {
-        username: string;
-        email: string;
-        password: string;
-        jwtToken: string;
-      }) => ({
+      query: (data: { email: string; password: string }) => ({
         url: "login",
         method: "POST",
         body: data,

@@ -7,9 +7,7 @@ import {
   CreditCard,
 } from "@mui/icons-material";
 
-type Props = {};
-
-const PromoBanner = (props: Props) => {
+const PromoBanner = () => {
   return (
     <div className="my-3">
       <Container className="bg-body-tertiary py-3">

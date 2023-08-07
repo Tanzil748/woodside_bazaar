@@ -3,7 +3,7 @@ import { ProductsModel } from "../models/Products";
 
 export const getAllProducts = async (req: Request, res: Response) => {
   try {
-    const products = await ProductsModel.find({});
+    const products = await ProductsModel.find({}).select("-__v");
     res.status(200).json(products);
   } catch (error) {
     res.status(500).json("All products not recieved");

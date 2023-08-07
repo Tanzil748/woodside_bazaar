@@ -5,6 +5,7 @@ import css from "../styles/Login.module.css";
 import { useSelector, useDispatch } from "react-redux";
 import { useLoginMutation } from "../redux/authEndpoints";
 import { setLocalUser } from "../redux/authSlice";
+import { RootState } from "../redux/store";
 
 const LoginPage = () => {
   const [email, setEmail] = useState("");
@@ -14,7 +15,7 @@ const LoginPage = () => {
   const navigate = useNavigate();
 
   const [login] = useLoginMutation();
-  const { userInformation } = useSelector((state) => state.auth);
+  const { userInformation } = useSelector((state: RootState) => state.auth);
 
   useEffect(() => {
     if (userInformation) {
@@ -23,9 +24,12 @@ const LoginPage = () => {
   }, [navigate, userInformation]);
 
   const loginHandler = async (e) => {
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-unsafe-call
     e.preventDefault();
     try {
+      // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
       const res = await login({ email, password }).unwrap();
+      // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
       dispatch(setLocalUser({ ...res }));
       navigate("/");
     } catch (error) {

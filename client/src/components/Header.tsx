@@ -16,18 +16,20 @@ import {
   LocalPhone,
   LocalGroceryStore,
   PermIdentity,
-  Search,
   ViewCompact,
 } from "@mui/icons-material";
 import { useSelector, useDispatch } from "react-redux";
 import { calcAllTotals } from "../redux/cartSlice";
 import { removeLocalUser } from "../redux/authSlice";
+import { RootState } from "../redux/store";
 
 const Header = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const { selectedProductQuantity } = useSelector((state) => state.cart);
-  const { userInformation } = useSelector((state) => state.auth);
+  const { selectedProductQuantity } = useSelector(
+    (state: RootState) => state.cart
+  );
+  const { userInformation } = useSelector((state: RootState) => state.auth);
 
   useEffect(() => {
     dispatch(calcAllTotals());

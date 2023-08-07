@@ -2,8 +2,16 @@ import { Row, Col, Button } from "react-bootstrap";
 import css from "../styles/SingleCartItem.module.css";
 import { addProductCart, decreaseProductCart } from "../redux/cartSlice";
 import { useDispatch } from "react-redux";
+import { Product } from "../redux/cartSlice";
 
-const SingleCartItem = ({ _id, img, name, category, price, cartQuantity }) => {
+const SingleCartItem = ({
+  _id,
+  img,
+  name,
+  category,
+  price,
+  cartQuantity,
+}: Product) => {
   const dispatch = useDispatch();
 
   return (

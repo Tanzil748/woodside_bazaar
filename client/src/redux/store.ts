@@ -4,6 +4,9 @@ import cartReducer from "./cartSlice";
 import authReducer from "./authSlice";
 import { authEndpoints } from "./authEndpoints";
 
+// Define the root state type
+export type RootState = ReturnType<typeof store.getState>;
+
 export const store = configureStore({
   reducer: {
     // Add the generated reducer as a specific top-level slice

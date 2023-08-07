@@ -3,12 +3,15 @@ import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 import { calcAllTotals } from "../redux/cartSlice";
 import { useDispatch, useSelector } from "react-redux";
+import { RootState } from "../redux/store";
 
 const CheckoutSuccess = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  const { selectedProductQuantity } = useSelector((state) => state.cart);
+  const { selectedProductQuantity } = useSelector(
+    (state: RootState) => state.cart
+  );
 
   useEffect(() => {
     dispatch(calcAllTotals());

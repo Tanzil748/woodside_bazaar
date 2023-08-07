@@ -3,7 +3,22 @@ import { Card, Button } from "react-bootstrap";
 import { useDispatch } from "react-redux";
 import { addProductCart } from "../redux/cartSlice";
 
-const ProductCard = ({ product }) => {
+// type for the Product data
+interface Product {
+  _id: string;
+  name: string;
+  img: string;
+  price: number;
+  category: string;
+  cartQuantity: number;
+}
+
+// defined Product type for the product prop
+interface ProductCardProps {
+  product: Product;
+}
+
+const ProductCard = ({ product }: ProductCardProps) => {
   const dispatch = useDispatch();
 
   return (
